@@ -14,7 +14,7 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 
 
 // Middleware
-app.use(cors({origin : "https://tanvir-foundation.netlify.app", credentials : true}));
+app.use(cors({origin : "*", credentials : true}));
 app.use(express.json());
 app.use('/uploads', express.static('uploads')); // Serve uploaded images
 app.use('/public', express.static(path.join(__dirname, 'public')));
