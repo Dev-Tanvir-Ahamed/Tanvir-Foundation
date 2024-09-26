@@ -7,21 +7,23 @@ import donationImg from "../assets/images/loginImg.jpg";
 
 import { login } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
+
 type FieldType = {
-  username?: string;
-  password?: string;
+  email: string;  
+  password: string;
 };
+
 const Login = () => {
-  const [loginData, { data, error }] = useLoginMutation();
+  const [loginData] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     try {
       const response = await loginData(values).unwrap();
       console.log(response);
       dispatch(login({ token: response.token, user: response.userData }));
-      // dispatch(values);
-      // Optionally, save token in local storage for persistence
+      // Save token in local storage for persistence
       localStorage.setItem("token", response.token);
       localStorage.setItem("user", JSON.stringify(response.userData));
       if (response) {
@@ -32,17 +34,12 @@ const Login = () => {
     }
   };
 
-  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
-    errorInfo
-  ) => {
-    console.log("Failed:", errorInfo);
-  };
   return (
-    <div className=" grid grid-cols-12 items-center h-screen">
+    <div className="grid grid-cols-12 items-center h-screen">
       <div className="col-span-12 md:col-span-6">
-        <img src={donationImg} className=" object-cover" alt="" />
+        <img src={donationImg} className="object-cover" alt="Donation" />
       </div>
-      <div className=" col-span-12 md:col-span-6 flex flex-col  items-center ">
+      <div className="col-span-12 md:col-span-6 flex flex-col items-center">
         <Form
           name="normal_login"
           className="login-form w-[50%]"
@@ -69,7 +66,9 @@ const Login = () => {
               placeholder="Password"
             />
           </Form.Item>
-          <p className=" text-red-700 mb-57u">{error?.data?.message}</p>
+          {/* {error && error.data && (
+            // <p className="text-red-700 mb-5">{error.data.message}</p>
+          )} */}
           <Form.Item>
             <Button
               type="primary"

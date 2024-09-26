@@ -19,13 +19,11 @@ type Inputs = {
 };
 
 const DonationForm = () => {
-  const [initiateDonation, { err }] = useInitialDonationMutation();
+  const [initiateDonation] = useInitialDonationMutation();
   const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -51,7 +49,8 @@ const DonationForm = () => {
         // Redirect the user to SSLCommerz payment page
         window.location.href = response.redirectUrl;
       }
-    } catch (error) {
+    } catch (err) {
+      console.log(err);
       dispatch(donationFailure("Payment initiation failed"));
     }
   };

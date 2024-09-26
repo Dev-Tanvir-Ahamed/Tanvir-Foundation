@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateDonationPostMutation } from "@/redux/api/baseApi";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,7 +15,7 @@ const CreateDonationPost = () => {
   const navigate = useNavigate();
   const notify = () =>
     toast("Donation Post Successfully Created!!!", { autoClose: 1000 });
-  const onSubmit = async (data) => {
+  const onSubmit = async (data : FieldValues) => {
     console.log("Form data before FormData:", data);
 
     // Create a new FormData object

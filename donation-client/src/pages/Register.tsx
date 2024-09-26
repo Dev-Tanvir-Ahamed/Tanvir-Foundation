@@ -2,20 +2,17 @@ import { useRegisterMutation } from "@/redux/api/baseApi";
 import { register as loginAction } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import type { FormProps } from "antd";
 import { Button, Form, Input } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import donationImg from "../assets/images/loginImg.jpg";
-type FieldType = {
-  username?: string;
-  password?: string;
-};
+import { FieldValues } from "react-hook-form";
+
 const Register = () => {
-  const [registerUser, { data, error }] = useRegisterMutation();
+  const [registerUser] = useRegisterMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onFinish = async (values) => {
+  const onFinish = async (values : FieldValues) => {
     try {
       const response = await registerUser(values).unwrap();
       console.log(response);
@@ -34,11 +31,6 @@ const Register = () => {
     }
   };
 
-  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
-    errorInfo
-  ) => {
-    console.log("Failed:", errorInfo);
-  };
   return (
     <div className=" grid grid-cols-12 items-center h-screen">
       <div className="col-span-12 md:col-span-6">
@@ -80,7 +72,7 @@ const Register = () => {
               placeholder="Password"
             />
           </Form.Item>
-          <p className=" text-red-700 mb-5">{error?.data?.message}</p>
+          {/* <p className=" text-red-700 mb-5">{error?.data?.message}</p> */}
           <Form.Item>
             <Button
               type="primary"

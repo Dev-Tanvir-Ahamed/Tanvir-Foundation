@@ -1,12 +1,12 @@
 import { useGetUserDonationStatsQuery } from "@/redux/api/baseApi";
-import capitalizeName from "../utils/capitalizeName.js";
+import UserName from "./shared/CapitalizeNameComponent.js";
 const UserDonationStats = () => {
   const name = JSON.parse(localStorage.getItem("user")!).name;
   const email = JSON.parse(localStorage.getItem("user")!).email;
   console.log(email);
 
   // Use the RTK Query hook
-  const { data, error, isLoading } = useGetUserDonationStatsQuery(email);
+  const { data, isLoading } = useGetUserDonationStatsQuery(email);
   console.log(data);
 
   if (isLoading) return <div>Loading...</div>;
@@ -24,7 +24,7 @@ const UserDonationStats = () => {
     return (
       <div className="col-span-12 md:col-span-4 shadow-xl p-5 space-y-3">
         <div className="text-[20px] font-semibold text-center">
-          <p>{capitalizeName(name)}</p>
+          <p><UserName name={name}/></p>
           <p className="font-normal">{email}</p>
         </div>
         <div className="flex justify-around items-center">
