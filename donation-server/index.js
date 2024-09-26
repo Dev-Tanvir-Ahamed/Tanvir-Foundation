@@ -8,11 +8,9 @@ const path = require("path")
 const uniqid = require('uniqid');
 const app = express();
 const port = process.env.PORT || 5000;
-const DonationPost = require('./model/DonationPost');
 const upload = require("./middleware/upload")
-// const Donation = require("./model/InitialDonation"); 
 const SSLCommerzPayment = require('sslcommerz-lts')
-const multer = require('multer');
+
 
 
 // Middleware
