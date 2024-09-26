@@ -20,8 +20,7 @@ app.use('/uploads', express.static('uploads')); // Serve uploaded images
 app.use('/public', express.static(path.join(__dirname, 'public')));
 // MongoDB Connection URL
 const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri, {   useNewUrlParser: true, 
-  useUnifiedTopology: true,
+const client = new MongoClient(uri, {
   connectTimeoutMS: 30000, // Increase the timeout to 30 seconds
   socketTimeoutMS: 45000  // Increase the socket timeout to 45 seconds
    });
