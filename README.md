@@ -46,6 +46,6 @@ A comprehensive platform to facilitate post-disaster relief efforts by centraliz
 To get started, clone the repository and install dependencies.
 
 ```bash
-git clone https://github.com/your-username/disaster-relief-donation-platform.git
-cd disaster-relief-donation-platform
+git clone https://github.com/your-username/disaster-relief-donation-platform.git](https://github.com/Dev-Tanvir-Ahamed/Tanvir-Foundation.git
+cd donation website
 npm install
