@@ -30,7 +30,7 @@ const StaticDonationPosts = () => {
             className="bg-white rounded-lg shadow-md overflow-hidden"
           >
             <img
-              src={`http://localhost:5000${post.image}`}
+              src={`https://tanvir-foundation.onrender.com${post.image}`}
               alt={post.title}
               className=" h-64 w-full object-cover"
             />
