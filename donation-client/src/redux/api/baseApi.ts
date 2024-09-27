@@ -4,6 +4,7 @@ export const baseApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://tanvir-foundation.onrender.com/api/v1",
+    credentials : "include",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as any).auth.token; // Get token from the Redux state
       if (token) {
