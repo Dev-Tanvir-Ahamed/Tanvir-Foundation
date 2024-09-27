@@ -14,7 +14,21 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 
 
 // Middleware
-app.use(cors({origin : "http://localhost:5173", credentials : true}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://tanvir-foundation.netlify.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use('/uploads', express.static('uploads')); // Serve uploaded images
 app.use('/public', express.static(path.join(__dirname, 'public')));
