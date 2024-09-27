@@ -17,7 +17,7 @@ const CreateDonationPost = () => {
     toast("Donation Post Successfully Created!!!", { autoClose: 1000 });
   const onSubmit = async (data : FieldValues) => {
     console.log("Form data before FormData:", data);
-
+    
     // Create a new FormData object
     const formData = new FormData();
 

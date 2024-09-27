@@ -14,7 +14,7 @@ type FieldType = {
 };
 
 const Login = () => {
-  const [loginData, {error}] = useLoginMutation();
+  const [loginData] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -66,9 +66,9 @@ const Login = () => {
               placeholder="Password"
             />
           </Form.Item>
-           {error && error.data && (
+           {/* {error && error.data && (
             <p className="text-red-700 mb-5">{error?.data.message}</p>
-          )} 
+          )}  */}
           <Form.Item>
             <Button
               type="primary"
