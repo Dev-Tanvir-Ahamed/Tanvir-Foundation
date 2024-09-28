@@ -16,7 +16,8 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 const corsOptions = {
   origin: ['https://tanvir-foundation.netlify.app'], // Allow this origin to access the server
   credentials: true,
-  methods : ["POST", "GET"] 
+  methods : ["POST", "GET"] ,
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
 app.use(cors(corsOptions));
@@ -284,7 +285,7 @@ const verifyToken = (req, res, next) => {
         
                 if (updatedDonation.modifiedCount > 0) {
                     // Redirect to the frontend with transaction ID and success message
-                    return res.redirect(`http://localhost:5173/donation-success/${tran_id}`);
+                    return res.redirect(`https://tanvir-foundation.netlify.app/donation-success/${tran_id}`);
                 } else {
                     res.status(500).json({ message: 'Failed to update donation status' });
                 }

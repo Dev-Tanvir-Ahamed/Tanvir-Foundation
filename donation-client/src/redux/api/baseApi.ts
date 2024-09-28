@@ -1,12 +1,12 @@
-// Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 export const baseApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://tanvir-foundation.onrender.com/api/v1",
-    credentials : "include",
+    credentials: "include",  // Set globally
     prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as any).auth.token; // Get token from the Redux state
+      const token = (getState() as any).auth?.token;
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
@@ -15,83 +15,64 @@ export const baseApi = createApi({
   }),
   endpoints: (builder) => ({
     register: builder.mutation({
-      query: (userInfo) => {
-        console.log(userInfo);
-
-        return {
-          url: "/register",
-          method: "POST",
-          body: userInfo,
-          credentials: "include",
-        };
-      },
+      query: (userInfo) => ({
+        url: "/register",
+        method: "POST",
+        body: userInfo,
+      }),
     }),
     login: builder.mutation({
-      query: (userInfo) => {
-        console.log(userInfo);
-
-        return {
-          url: "/login",
-          method: "POST",
-          body: userInfo,
-        };
-      },
+      query: (userInfo) => ({
+        url: "/login",
+        method: "POST",
+        body: userInfo,
+      }),
     }),
-    // Fetch all donation posts
     getDonationPosts: builder.query({
-      query: () => {
-        return {
-          url: "/donation-posts",
-          method: "GET",
-        };
-      },
+      query: () => ({
+        url: "/donation-posts",
+        method: "GET",
+      }),
+      // providesTags : ["donationPosts"]  // Cache tag for posts
     }),
-    // Fetch specific donation post by ID
     getDonationPost: builder.query({
-      query: (_id) => {
-        return {
-          url: `/donation-posts/${_id}`,
-          method: "GET",
-        };
-      },
+      query: (_id) => ({
+        url: `/donation-posts/${_id}`,
+        method: "GET",
+      }),
     }),
-    // Initiate donation process
     initialDonation: builder.mutation({
-      query: (donationData) => {
-        console.log("inside data", donationData);
-
-        return {
-          url: "/donate",
-          method: "POST",
-          body: donationData,
-        };
-      },
+      query: (donationData) => ({
+        url: "/donate",
+        method: "POST",
+        body: donationData,
+      }),
     }),
     getDonationByTransactionId: builder.query({
       query: (tran_id) => `/success/${tran_id}`,
     }),
-    // Get donation status by transaction ID
     getUserDonationStats: builder.query({
-      query: (email) => `user-donation-stats?email=${email}`,
+      query: (email) => `user-donation-stats?email=${encodeURIComponent(email)}`,
     }),
     createDonationPost: builder.mutation({
       query: (donationPostData) => {
-        console.log("baseApi", donationPostData);
-
+        const formData = new FormData();
+        for (const key in donationPostData) {
+          formData.append(key, donationPostData[key]);
+        }
         return {
           url: "/create-donation",
           method: "POST",
-          body: donationPostData,
+          body: formData,  // Send formData with file
         };
       },
+      // invalidatesTags: ['DonationPosts'],  // Invalidate posts cache
     }),
     getAllCreateDonationPost: builder.query({
-      query: () => {
-        return {
-          url: "/show-donation",
-          method: "GET",
-        };
-      },
+      query: () => ({
+        url: "/show-donation",
+        method: "GET",
+      }),
     }),
   }),
 });
