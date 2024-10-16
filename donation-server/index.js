@@ -11,10 +11,11 @@ const port = process.env.PORT || 5000;
 const upload = require("./middleware/upload")
 const SSLCommerzPayment = require('sslcommerz-lts')
 
-
+// https://tanvir-foundation.vercel.app
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ["https://tanvir-foundation.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true
 }));
 
@@ -205,10 +206,10 @@ const verifyToken = (req, res, next) => {
                 total_amount: amount,
                 currency: 'BDT',
                 tran_id: tran_id, // Unique transaction ID from MongoDB
-                success_url: `https://tanvir-foundation.onrender.com/api/v1/success/${tran_id}`,
-                fail_url: 'https://tanvir-foundation.onrender.com/api/v1/fail',
-                cancel_url: 'https://tanvir-foundation.onrender.com/api/v1/cancel',
-                ipn_url: 'https://tanvir-foundation.onrender.com/api/v1/ipn',
+                success_url: `https://tanvir-foundation-server.vercel.app/api/v1/success/${tran_id}`,
+                fail_url: 'https://tanvir-foundation-server.vercel.app/api/v1/fail',
+                cancel_url: 'https://tanvir-foundation-server.vercel.app/api/v1/cancel',
+                ipn_url: 'https://tanvir-foundation-server.vercel.app/api/v1/ipn',
                 shipping_method: 'NO',
                 product_name: 'Donation',
                 product_category: 'Donation',
@@ -283,7 +284,7 @@ const verifyToken = (req, res, next) => {
         
                 if (updatedDonation.modifiedCount > 0) {
                     // Redirect to the frontend with transaction ID and success message
-                    return res.redirect(`https://tanvir-foundation.netlify.app/donation-success/${tran_id}`);
+                    return res.redirect(`https://tanvir-foundation.vercel.app/donation-success/${tran_id}`);
                 } else {
                     res.status(500).json({ message: 'Failed to update donation status' });
                 }
@@ -379,7 +380,7 @@ app.post('/api/v1/create-donation', upload.single('image'), async (req, res) => 
     const imagePath = req.file.path.replace(/\\/g, "/");
     console.log(imagePath);
     
-    const imageUrl = `https://tanvir-foundation.onrender.com/${imagePath}`;
+    const imageUrl = `https://tanvir-foundation-server.vercel.app/${imagePath}`;
 
     
     // Create new donation post

@@ -12,7 +12,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://tanvir-foundation.onrender.com",
+        target: "https://tanvir-foundation-server.vercel.app",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""), // Adjusts API calls
       },
