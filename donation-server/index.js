@@ -85,6 +85,7 @@ async function run() {
           });
       });
       
+      app.get('/favicon.ico', (req, res) => res.status(204));
 
         // User Login
   // User Login
