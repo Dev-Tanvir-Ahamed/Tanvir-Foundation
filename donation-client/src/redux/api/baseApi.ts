@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://tanvir-foundation-server.vercel.app/api/v1",
+    baseUrl: "https://tanvir-foundation.onrender.com/api/v1",
     credentials: "include", // Set globally
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as any).auth?.token;
