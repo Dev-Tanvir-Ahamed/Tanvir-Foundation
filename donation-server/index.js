@@ -13,14 +13,12 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 
 
 
-const corsOptions = {
-  origin: ['https://tanvir-foundation.netlify.app'], // Allow this origin to access the server
-  credentials: true,
-  methods : ["POST", "GET"] ,
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
 
-app.use(cors(corsOptions));
+
 
 
 

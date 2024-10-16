@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://tanvir-foundation.onrender.com/api/v1",
-    credentials: "include",  // Set globally
+    baseUrl: "http://localhost:5000/api/v1",
+    credentials: "include", // Set globally
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as any).auth?.token;
       if (token) {
@@ -52,7 +52,8 @@ export const baseApi = createApi({
       query: (tran_id) => `/success/${tran_id}`,
     }),
     getUserDonationStats: builder.query({
-      query: (email) => `user-donation-stats?email=${encodeURIComponent(email)}`,
+      query: (email) =>
+        `user-donation-stats?email=${encodeURIComponent(email)}`,
     }),
     createDonationPost: builder.mutation({
       query: (donationPostData) => {
@@ -63,7 +64,7 @@ export const baseApi = createApi({
         return {
           url: "/create-donation",
           method: "POST",
-          body: formData,  // Send formData with file
+          body: formData, // Send formData with file
         };
       },
       // invalidatesTags: ['DonationPosts'],  // Invalidate posts cache

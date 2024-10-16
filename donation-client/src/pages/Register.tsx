@@ -7,6 +7,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import donationImg from "../assets/images/loginImg.jpg";
 import { FieldValues } from "react-hook-form";
 
+
 const Register = () => {
   const [registerUser] = useRegisterMutation();
   const dispatch = useAppDispatch();
