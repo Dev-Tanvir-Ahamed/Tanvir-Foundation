@@ -14,10 +14,11 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 // https://tanvir-foundation.vercel.app
 
 app.use(cors({
-  origin: ["https://tanvir-foundation.vercel.app"],
+  origin: '*',
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true
 }));
+
 
 
 
