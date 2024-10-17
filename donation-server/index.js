@@ -14,9 +14,11 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 // https://tanvir-foundation.vercel.app
 
 app.use(cors({
-  origin: '*',
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  credentials: true
+  origin: ["https://tanvir-foundation.vercel.app"],  // Allow only your frontend origin
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],  // Include all relevant methods
+  credentials: true,  // Allow credentials like cookies, authorization headers, etc.
+  allowedHeaders: ["Content-Type", "Authorization"],  // Allow required headers
+  optionsSuccessStatus: 200  // Some browsers (like legacy IE) need this status for successful OPTIONS requests
 }));
 
 

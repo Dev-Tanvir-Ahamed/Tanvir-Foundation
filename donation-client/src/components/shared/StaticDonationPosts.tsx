@@ -10,6 +10,8 @@ const StaticDonationPosts = () => {
     isLoading,
     isError,
   } = useGetDonationPostsQuery(undefined);
+  console.log(donationPosts);
+
   if (isLoading) return <p className="text-center mt-10 text-lg">Loading...</p>;
   if (isError)
     return (
