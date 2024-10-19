@@ -66,9 +66,9 @@ async function run() {
       
           // Generate JWT token with the user's data
           const token = jwt.sign(
-              { id: data.insertedId, name, email },  // Include all necessary details
-              process.env.JWT_SECRET,
-              { expiresIn: process.env.EXPIRES_IN }
+            { id: data.insertedId, name, email },
+            process.env.JWT_SECRET,
+            { expiresIn: process.env.EXPIRES_IN || "365d" }  // Default to 1 hour if EXPIRES_IN is not set
           );
       
           // Send user data along with token
