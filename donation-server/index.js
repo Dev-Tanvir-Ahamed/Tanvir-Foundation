@@ -14,14 +14,13 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 // https://tanvir-foundation.vercel.app
 
 const corsOptions = {
-  origin: ["https://tanvir-foundation.vercel.app", "https://fabulous-dragon-cbe5a5.netlify.app"], // Add Netlify domain here
-  credentials: true, // Allow sending credentials like cookies or authorization headers
-};
+  origin: ['https://tanvir-foundation.vercel.app', 'https://fabulous-dragon-cbe5a5.netlify.app/'],
+  credentials: true,
+  optionSuccessStatus: 200,
+  }
+  app.use(cors(corsOptions))
 
-app.use(cors(corsOptions));
 
-// Handle preflight requests for complex requests (like those with credentials)
-app.options("*", cors(corsOptions));
 
 
 
