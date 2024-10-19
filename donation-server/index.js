@@ -16,7 +16,7 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 
 // Allow credentials and specify the allowed origin
 const corsOptions = {
-  origin: 'https://tanvir-foundation.vercel.app', // Your frontend URL
+  origin: ["https://tanvir-foundation.vercel.app", "http://localhost:5173"], // Your frontend URL
   credentials: true, // This allows cookies and other credentials
   optionsSuccessStatus: 200,
 };
