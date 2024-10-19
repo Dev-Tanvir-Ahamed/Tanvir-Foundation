@@ -210,10 +210,10 @@ const verifyToken = (req, res, next) => {
                 total_amount: amount,
                 currency: 'BDT',
                 tran_id: tran_id, // Unique transaction ID from MongoDB
-                success_url: `https://tanvir-foundation.onrender.com/api/v1/success/${tran_id}`,
-                fail_url: 'https://tanvir-foundation.onrender.com/api/v1/fail',
-                cancel_url: 'https://tanvir-foundation.onrender.com/api/v1/cancel',
-                ipn_url: 'https://tanvir-foundation.onrender.com/api/v1/ipn',
+                success_url: `https://tanvir-foundation-server.vercel.app/api/v1/success/${tran_id}`,
+                fail_url: 'https://tanvir-foundation-server.vercel.app/api/v1/fail',
+                cancel_url: 'https://tanvir-foundation-server.vercel.app/api/v1/cancel',
+                ipn_url: 'https://tanvir-foundation-server.vercel.app/api/v1/ipn',
                 shipping_method: 'NO',
                 product_name: 'Donation',
                 product_category: 'Donation',
@@ -384,7 +384,7 @@ app.post('/api/v1/create-donation', upload.single('image'), async (req, res) => 
     const imagePath = req.file.path.replace(/\\/g, "/");
     console.log(imagePath);
     
-    const imageUrl = `https://tanvir-foundation.onrender.com/${imagePath}`;
+    const imageUrl = `https://tanvir-foundation-server.vercel.app/${imagePath}`;
 
     
     // Create new donation post
