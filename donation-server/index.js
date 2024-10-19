@@ -13,7 +13,6 @@ const SSLCommerzPayment = require('sslcommerz-lts')
 
 // https://tanvir-foundation.vercel.app
 
-const cors = require('cors');
 
 // Allow credentials and specify the allowed origin
 const corsOptions = {
