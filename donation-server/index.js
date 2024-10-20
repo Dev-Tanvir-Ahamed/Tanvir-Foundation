@@ -243,15 +243,12 @@ const verifyToken = (req, res, next) => {
           
               if (apiResponse?.GatewayPageURL) {
                 // Send the user to the payment gateway URL
-                console.log('Redirecting to payment gateway: ', apiResponse.GatewayPageURL);
                 res.json({ redirectUrl: apiResponse.GatewayPageURL });
               } else {
-                console.error('Payment initiation failed', apiResponse);
-                res.status(500).send('Payment initiation failed');
+                res.status(500).json({message : "Payment initiation failed"});
               }
             } catch (error) {
-              console.error('Error processing donation', error);
-              res.status(500).send('Payment processing failed');
+              res.status(500).json({message : error.message});
             }
           });
   
@@ -294,7 +291,6 @@ const verifyToken = (req, res, next) => {
                 }
                 
             } catch (error) {
-                console.error('Error fetching transition details', error);
                 res.status(500).send('Payment processing failed');
             }
         });
