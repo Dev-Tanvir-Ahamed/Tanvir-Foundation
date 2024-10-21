@@ -238,7 +238,7 @@ const verifyToken = (req, res, next) => {
               };
           
               // Initialize SSLCommerz
-              const sslcz = new SSLCommerzPayment(process.env.STORE_ID, process.env.STORE_PASSWD, true); // Test mode
+              const sslcz = new SSLCommerzPayment(process.env.STORE_ID, process.env.STORE_PASSWD, false); // Test mode
               const apiResponse = await sslcz.init(paymentData);
               console.log("SSLCommerz API Response:", apiResponse); // Add this log
               if (apiResponse?.GatewayPageURL) {
