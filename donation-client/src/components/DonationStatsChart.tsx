@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetUserDonationStatsQuery } from "@/redux/api/baseApi";
 import {
   BarElement,
@@ -23,7 +24,7 @@ const DonationStatsChart = () => {
   } = useGetUserDonationStatsQuery(email);
 
   // State to hold the current label color
-  const [labelColor, setLabelColor] = useState("white");
+  const [labelColor, setLabelColor] = useState("black");
 
   useEffect(() => {
     // Detect dark mode using prefers-color-scheme
@@ -33,7 +34,8 @@ const DonationStatsChart = () => {
     setLabelColor(darkModeMediaQuery.matches ? "white" : "black");
 
     // Listen for changes in dark mode preference
-    const handleChange = (e) => setLabelColor(e.matches ? "white" : "black");
+    const handleChange = (e: any) =>
+      setLabelColor(e.matches ? "white" : "black");
     darkModeMediaQuery.addEventListener("change", handleChange);
 
     // Clean up listener on unmount
