@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-
 import { logout } from "@/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { themeChange } from "theme-change";
 import logo from "../assets/images/tanvir.jpeg";
 
 const Header = () => {
@@ -15,9 +16,11 @@ const Header = () => {
   const handleLogout = () => {
     dispatch(logout()); // Dispatch the logout action to clear user state
   };
-
+  useEffect(() => {
+    themeChange(false); // Pass 'true' to enable system theme detection
+  }, []);
   return (
-    <div className="flex justify-around h-24 items-center">
+    <div className="flex justify-around h-24 items-center bg-white dark:bg-dark-background dark:text-dark-text">
       {/* Logo */}
       <div className="logo">
         <NavLink to="/home">

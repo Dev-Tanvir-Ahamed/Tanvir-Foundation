@@ -10,8 +10,17 @@ export default {
   		colors: {
   			primary_color: '#008E48',
   			secondary_color: '#0A3B1E',
+			dark_mode : "#0F172A",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+			  light: {
+				background: '#FFFFFF',
+				text: '#000000',
+			  },
+			  dark: {
+				background: '#1A202C',
+				text: '#FFFFFF',
+			  },
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

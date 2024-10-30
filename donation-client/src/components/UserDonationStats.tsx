@@ -22,13 +22,15 @@ const UserDonationStats = () => {
     } = data;
 
     return (
-      <div className="col-span-12 md:col-span-4 shadow-xl p-5 space-y-3">
+      <div className="col-span-12 md:col-span-4 shadow-xl p-5 space-y-3 dark:bg-dark_mode">
         <div className="text-[20px] font-semibold text-center">
-          <p><UserName name={name}/></p>
+          <p>
+            <UserName name={name} />
+          </p>
           <p className="font-normal">{email}</p>
         </div>
         <div className="flex justify-around items-center">
-          <div className=" font-bold text-gray-700 text-[18px] space-y-2">
+          <div className=" font-bold text-gray-700 dark:text-white text-[18px] space-y-2">
             <p>Last Donation</p>
             <p>Total Donation Number</p>
             <p>Minimum Donation</p>

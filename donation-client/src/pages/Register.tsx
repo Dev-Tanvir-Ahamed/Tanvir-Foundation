@@ -3,17 +3,16 @@ import { register as loginAction } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
+import { FieldValues } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import donationImg from "../assets/images/loginImg.jpg";
-import { FieldValues } from "react-hook-form";
-
 
 const Register = () => {
   const [registerUser] = useRegisterMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onFinish = async (values : FieldValues) => {
+  const onFinish = async (values: FieldValues) => {
     try {
       const response = await registerUser(values).unwrap();
       console.log(response);
@@ -33,7 +32,7 @@ const Register = () => {
   };
 
   return (
-    <div className=" grid grid-cols-12 items-center h-screen">
+    <div className=" grid grid-cols-12 items-center h-screen dark:bg-dark-background dark:text-dark-text bg-white">
       <div className="col-span-12 md:col-span-6">
         <img src={donationImg} className=" object-cover" alt="" />
       </div>

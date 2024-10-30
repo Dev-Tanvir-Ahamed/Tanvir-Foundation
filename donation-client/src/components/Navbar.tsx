@@ -1,8 +1,8 @@
 // import NavbarBase from "@/components/NavbarBase";
 import ReusableNavbar from "@/components/shared/ReusableNavbar";
 import { NavLink } from "react-router-dom";
-
 const Navbar = () => {
+
   const items = [
     {
       key: "All Donations",

@@ -13,7 +13,6 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage for
 import { baseApi } from "./api/baseApi";
 import authReducer from "./features/auth/authSlice";
 import donationReducer from "./features/donation/donationSlice";
-
 // Persist configuration
 const persistConfig = {
   key: "root", // key for the persisted state

@@ -9,7 +9,7 @@ import { login } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 
 type FieldType = {
-  email: string;  
+  email: string;
   password: string;
 };
 
@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   return (
-    <div className="grid grid-cols-12 items-center h-screen">
+    <div className="grid grid-cols-12 items-center h-screen dark:bg-dark-background dark:text-dark-text bg-white">
       <div className="col-span-12 md:col-span-6">
         <img src={donationImg} className="object-cover" alt="Donation" />
       </div>
@@ -66,7 +66,7 @@ const Login = () => {
               placeholder="Password"
             />
           </Form.Item>
-           {/* {error && error.data && (
+          {/* {error && error.data && (
             <p className="text-red-700 mb-5">{error?.data.message}</p>
           )}  */}
           <Form.Item>

@@ -8,7 +8,7 @@ const path = require("path")
 const uniqid = require('uniqid');
 const app = express();
 const port = process.env.PORT || 5000;
-const upload = require("./middleware/upload")
+const upload = require("./middlewares/upload")
 const SSLCommerzPayment = require('sslcommerz-lts')
 
 // https://tanvir-foundation.vercel.app
@@ -463,3 +463,4 @@ app.get('/', (req, res) => {
     };
     res.json(serverStatus);
 })
+

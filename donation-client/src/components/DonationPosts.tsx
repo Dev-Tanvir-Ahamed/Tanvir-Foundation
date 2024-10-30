@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import StaticDonationPosts from "@/components/shared/StaticDonationPosts";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -6,7 +5,7 @@ import { Button } from "./ui/button";
 const DonationPosts = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-[#F5F5F5] py-10">
+    <div className="bg-[#f5f5f5] dark:bg-dark-background dark:text-dark-text">
       <div className="max-w-7xl mx-auto px-3">
         <StaticDonationPosts />
         <div className="w-full text-center pt-5">

@@ -58,7 +58,7 @@ const ReusableNavbar = ({
       {/* Overlay when mobile menu is open */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-10 md:hidden"
+          className="fixed inset-0 bg-black opacity-50 z-10 md:hidden dark:bg-dark-background dark:text-dark-text"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}

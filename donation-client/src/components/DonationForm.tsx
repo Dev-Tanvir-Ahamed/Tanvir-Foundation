@@ -21,10 +21,7 @@ type Inputs = {
 const DonationForm = () => {
   const [initiateDonation] = useInitialDonationMutation();
   const dispatch = useAppDispatch();
-  const {
-    register,
-    handleSubmit,
-  } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     // Get the userId from localStorage (assuming it's stored there upon login)
@@ -56,7 +53,7 @@ const DonationForm = () => {
   };
 
   return (
-    <div>
+    <div className="dark:bg-dark-background dark:text-dark-text">
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-5">
           <div className="flex">

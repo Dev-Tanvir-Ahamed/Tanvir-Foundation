@@ -21,7 +21,7 @@ const StaticDonationPosts = () => {
     );
 
   return (
-    <>
+    <div className="dark:bg-dark-background dark:text-dark-text">
       <h1 className="text-3xl font-semibold text-center mb-8">
         Latest Events & Programs
       </h1>
@@ -29,7 +29,7 @@ const StaticDonationPosts = () => {
         {donationPosts?.map((post: any) => (
           <div
             key={post._id}
-            className="bg-white rounded-lg shadow-md overflow-hidden"
+            className="bg-white rounded-lg shadow-md overflow-hidden dark:bg-dark_mode dark:text-dark-text"
           >
             <img
               src={`https://tanvir-foundation-server.vercel.app${post.image}`}
@@ -38,15 +38,17 @@ const StaticDonationPosts = () => {
             />
             <div className="p-4">
               <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-              <p className="text-gray-700 mb-4">{post.details}</p>
-              <p className="text-gray-600 mb-2">
+              <p className="text-gray-700 mb-4 dark:text-dark-text">
+                {post.details}
+              </p>
+              <p className="text-gray-600 mb-2 dark:text-dark-text">
                 <strong>Category:</strong> {post.category}
               </p>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-4 dark:text-dark-text">
                 <strong>Amount:</strong> {post.amount}
               </p>
               <Link to={`/donations/${post._id}`}>
-                <Button className="w-full py-2 px-4 bg-primary_color text-white rounded-md hover:bg-secondary_color transition duration-300">
+                <Button className="w-full py-2 px-4 bg-primary_color text-white rounded-md hover:bg-secondary_color transition duration-300 dark:bg-blue-600">
                   View Details
                 </Button>
               </Link>
@@ -54,7 +56,7 @@ const StaticDonationPosts = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

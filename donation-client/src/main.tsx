@@ -7,13 +7,16 @@ import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
 import { persistor, store } from "./redux/store.ts";
 import { router } from "./routes/routes.tsx";
+import ThemeProvider from "./utils/ThemeProvider.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        <RouterProvider router={router} />
+        <ThemeProvider>
+          <RouterProvider router={router} />
+          <ToastContainer />
+        </ThemeProvider>
       </PersistGate>
-      <ToastContainer />
     </Provider>
   </StrictMode>
 );

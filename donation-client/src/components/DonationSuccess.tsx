@@ -17,7 +17,7 @@ const DonationSuccess = () => {
   if (error) return <div>Error fetching donation details</div>;
 
   return (
-    <div className="bg-[#f5f5f5] h-screen">
+    <div className="bg-[#f5f5f5] h-screen dark:bg-dark-background dark:text-dark-text">
       <div className="max-w-4xl mx-auto px-3">
         <div className="text-center space-y-5 mb-10">
           <h1 className="text-4xl pt-10 text-gray-700 font-bold">
