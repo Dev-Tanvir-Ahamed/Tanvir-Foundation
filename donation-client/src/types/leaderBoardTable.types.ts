@@ -1,4 +1,4 @@
-type TLeaderBoardProps = {
+export type TLeaderBoardProps = {
   name: string;
   email: string;
   totalDonationAmount: number;
