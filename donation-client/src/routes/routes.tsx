@@ -5,6 +5,7 @@ import ProtectedRoute from "@/components/shared/ProtectedRoute";
 import AllDonationPosts from "@/pages/AllDonationPosts";
 import CreateDonationPost from "@/pages/CreateDonationPost";
 import DonateNow from "@/pages/DonateNow";
+import DonationLeaderBoard from "@/pages/DonationLeaderBoard";
 import DonationPost from "@/pages/DonationPost";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/donations",
         element: <AllDonationPosts />,
+      },
+      {
+        path: "/leaderboard",
+        element: <DonationLeaderBoard />,
       },
     ],
   },

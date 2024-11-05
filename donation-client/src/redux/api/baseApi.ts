@@ -78,6 +78,13 @@ export const baseApi = createApi({
         method: "GET",
       }),
     }),
+    getLeaderBoard: builder.query({
+      query: ({ page, pageSize }) => ({
+        url: "/leaderboard",
+        method: "GET",
+        params: { page, limit: pageSize },
+      }),
+    }),
   }),
 });
 
@@ -91,4 +98,5 @@ export const {
   useGetUserDonationStatsQuery,
   useCreateDonationPostMutation,
   useGetAllCreateDonationPostQuery,
+  useGetLeaderBoardQuery,
 } = baseApi;

@@ -433,9 +433,72 @@ app.get("/api/v1/show-donation", async (req, res) => {
   }
 });
 
+app.get('/api/v1/leaderboard', async (req, res) => {
+  try {
+     // Parse pagination parameters
+     const page = parseInt(req.query.page) || 1;
+     const limit = parseInt(req.query.limit) || 10;
+     const skip = (page - 1) * limit;
+      // Aggregate donations by userId, summing up total donations for each donor with successful payments
+      const topDonors = await initialDonationCollection.aggregate([
+          { $match: { paymentStatus: 'successful' } }, // Only successful donations
+          {
+              $group: {
+                  _id: "$userId",
+                  name: { $first: "$name" }, // Assuming name is the same for each userId
+                  email: { $first: "$email" },
+                  totalDonationAmount: { $sum: "$amount" }, // Calculate total donation amount per donor
+                  donationCount: { $sum: 1 }, // Count total number of donations
+                  lastDonation: { $last: "$amount" }, // Get the amount of the last donation
+                  lastDonationDate: { $last: "$paymentDate" } // Get the date of the last donation
+              }
+          },
+          { $sort: { totalDonationAmount: -1 } }, // Sort by total donation amount in descending order
+          { $skip: skip }, // Skip documents for pagination
+          { $limit: limit } // Limit documents for pagination
+      ]).toArray();
 
+      // If there are no donors, send an empty array
+      if (!topDonors || topDonors.length === 0) {
+          return res.status(200).json({
+              success: true,
+              message: "No donations found",
+              data: []
+          });
+      }
 
+          // Get the total number of successful donors for pagination calculation
+          const totalDonors = await initialDonationCollection.countDocuments({ paymentStatus: 'successful' });
 
+          // Calculate total pages
+          const totalPages = Math.ceil(totalDonors / limit);
+
+      // Return the top donors with their total donation details
+      res.status(200).json({
+          success: true,
+          message: "Top donors with detailed donation data fetched successfully",
+          data: topDonors.map((donor, index) => ({
+              name: donor.name,
+              email: donor.email,
+              totalDonationAmount: donor.totalDonationAmount,
+              lastDonation: donor.lastDonation,
+              lastDonationDate: donor.lastDonationDate,
+              donationCount: donor.donationCount,
+              pageInfo: {
+                currentPage: page,
+                totalPages,
+                totalRecords: totalDonors
+            }
+          }))
+      });
+  } catch (error) {
+      res.status(500).json({
+          success: false,
+          message: "Server error while fetching leaderboard",
+          error: error.message
+      });
+  }
+});
 
           
         

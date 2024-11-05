@@ -2,7 +2,6 @@
 import ReusableNavbar from "@/components/shared/ReusableNavbar";
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
-
   const items = [
     {
       key: "All Donations",
@@ -28,6 +27,16 @@ const Navbar = () => {
         <span className="text-white text-lg hover:text-primary_color">
           Gallery
         </span>
+      ),
+    },
+    {
+      key: "LeaderBoard",
+      label: (
+        <NavLink to="/leaderboard">
+          <span className="text-white text-lg hover:text-primary_color">
+            LeaderBoard
+          </span>
+        </NavLink>
       ),
     },
     {
