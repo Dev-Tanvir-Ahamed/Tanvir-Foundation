@@ -50,6 +50,7 @@ async function run() {
         const donationPostsCollection = db.collection('donationPosts');
         const initialDonationCollection = db.collection("donate")
         const createDonationPostsCollection = db.collection("createDonationPosts")
+        const gratitudeWallCollection = db.collection("gratitudeWall")
         app.post('/api/v1/register', async (req, res) => {
           const { name, email, password } = req.body;
       
@@ -500,8 +501,45 @@ app.get('/api/v1/leaderboard', async (req, res) => {
   }
 });
 
-          
-        
+app.post("/api/v1/community", async (req, res) => {
+  const {author, content} = req.body
+  try {
+    const gratitude = {
+      author : author,
+      content : content
+    }
+    const response = await gratitudeWallCollection.insertOne(gratitude)
+    res.status(201).json({
+      success: true,
+      message: "data fetched succesfully",
+      data: gratitude
+  });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to add gratitude entry"
+    });
+  }
+})
+
+
+app.get("/api/v1/community", async (req, res) => {
+  try {
+    const gratitudeMessages = await gratitudeWallCollection.find().toArray(); // Fetch all messages
+    res.status(200).json({
+      success: true,
+      message: "Data fetched successfully",
+      data: gratitudeMessages
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch data"
+    });
+  }
+});
+
         
         
 

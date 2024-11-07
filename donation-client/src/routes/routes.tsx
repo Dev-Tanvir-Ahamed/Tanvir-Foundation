@@ -3,6 +3,7 @@ import MainLayout from "@/components/layouts/MainLayout";
 import UserLoggedLayout from "@/components/layouts/UserLoggedLayout"; // Ensure correct casing
 import ProtectedRoute from "@/components/shared/ProtectedRoute";
 import AllDonationPosts from "@/pages/AllDonationPosts";
+import CommunityGratitudeWall from "@/pages/CommunityGratitudewall";
 import CreateDonationPost from "@/pages/CreateDonationPost";
 import DonateNow from "@/pages/DonateNow";
 import DonationLeaderBoard from "@/pages/DonationLeaderBoard";
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/leaderboard",
         element: <DonationLeaderBoard />,
+      },
+      {
+        path: "/community",
+        element: <CommunityGratitudeWall />,
       },
     ],
   },

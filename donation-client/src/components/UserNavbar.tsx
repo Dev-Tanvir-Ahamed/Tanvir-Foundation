@@ -8,7 +8,7 @@ const UserLoggedNavbar = () => {
       key: "Profile",
       label: (
         <NavLink to="/profile">
-          <span className="text-black text-lg hover:text-primary_color">
+          <span className="text-white text-lg hover:text-primary_color">
             Profile
           </span>
         </NavLink>
@@ -18,7 +18,7 @@ const UserLoggedNavbar = () => {
       key: "Donations",
       label: (
         <NavLink to="/donations">
-          <span className="text-black text-lg hover:text-primary_color">
+          <span className="text-white text-lg hover:text-primary_color">
             Donations
           </span>
         </NavLink>
@@ -28,7 +28,7 @@ const UserLoggedNavbar = () => {
       key: "Projects",
       label: (
         <NavLink to="/projects">
-          <span className="text-black text-lg hover:text-primary_color">
+          <span className="text-white text-lg hover:text-primary_color">
             Projects
           </span>
         </NavLink>
@@ -38,7 +38,7 @@ const UserLoggedNavbar = () => {
       key: "Create Donation",
       label: (
         <NavLink to="/user/create-donation">
-          <span className="text-black text-lg hover:text-primary_color">
+          <span className="text-white text-lg hover:text-primary_color">
             Create Donation
           </span>
         </NavLink>
@@ -48,8 +48,18 @@ const UserLoggedNavbar = () => {
       key: "Show Donation",
       label: (
         <NavLink to="/user/show-createDonationPosts">
-          <span className="text-black text-lg hover:text-primary_color">
+          <span className="text-white text-lg hover:text-primary_color">
             Show DonationPosts
+          </span>
+        </NavLink>
+      ),
+    },
+    {
+      key: "LeaderBoard",
+      label: (
+        <NavLink to="/leaderboard">
+          <span className="text-white text-lg hover:text-primary_color">
+            LeaderBoard
           </span>
         </NavLink>
       ),
@@ -59,7 +69,7 @@ const UserLoggedNavbar = () => {
   return (
     <ReusableNavbar
       items={items}
-      backgroundColor="bg-green-700"
+      backgroundColor="bg-[#0A3B1E]"
       textColor="text-[#ffffff]"
     />
   );

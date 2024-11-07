@@ -85,6 +85,23 @@ export const baseApi = createApi({
         params: { page, limit: pageSize },
       }),
     }),
+    postGratitudeWall: builder.mutation({
+      query: (message) => {
+        return {
+          url: "/community",
+          method: "POST",
+          body: message,
+        };
+      },
+      invalidatesTags: ["Gratitude"],
+    }),
+    getGratitudeWall: builder.query({
+      query: () => ({
+        url: "/community",
+        method: "GET",
+      }),
+      providesTags: ["Gratitude"], // Cache tag for posts
+    }),
   }),
 });
 
@@ -99,4 +116,6 @@ export const {
   useCreateDonationPostMutation,
   useGetAllCreateDonationPostQuery,
   useGetLeaderBoardQuery,
+  usePostGratitudeWallMutation,
+  useGetGratitudeWallQuery,
 } = baseApi;

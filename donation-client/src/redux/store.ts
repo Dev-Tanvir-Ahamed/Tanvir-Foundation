@@ -17,7 +17,7 @@ import donationReducer from "./features/donation/donationSlice";
 const persistConfig = {
   key: "root", // key for the persisted state
   storage, // use localStorage as the default storage
-  whitelist: ["auth", "donation"], // Specify which slices to persist
+  whitelist: ["auth", "donation", "Gratitude"], // Specify which slices to persist
 };
 
 // Combine reducers
