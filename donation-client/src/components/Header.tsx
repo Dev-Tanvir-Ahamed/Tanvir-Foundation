@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { themeChange } from "theme-change";
-import logo from "../assets/images/tanvir.jpeg";
 
 const Header = () => {
   const loginData = useAppSelector((state) => state.auth.user);
@@ -24,7 +23,9 @@ const Header = () => {
       {/* Logo */}
       <div className="logo">
         <NavLink to="/home">
-          <img src={logo} alt="logo" />
+          <h1 className="text-3xl font-bold text-black dark:text-white">
+            Tanvir Foundation
+          </h1>
         </NavLink>
       </div>
 
