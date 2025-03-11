@@ -44,9 +44,7 @@ const StaticDonationPosts = () => {
               <p className="text-gray-600 mb-2 dark:text-dark-text">
                 <strong>Category:</strong> {post.category}
               </p>
-              <p className="text-gray-600 mb-4 dark:text-dark-text">
-                <strong>Amount:</strong> {post.amount}
-              </p>
+
               <Link to={`/donations/${post._id}`}>
                 <Button className="w-full py-2 px-4 bg-primary_color text-white rounded-md hover:bg-secondary_color transition duration-300 dark:bg-blue-600">
                   View Details

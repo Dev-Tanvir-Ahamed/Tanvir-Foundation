@@ -1,50 +1,43 @@
-import { Button } from "@/components/ui/button";
-import { ConfigProvider, theme } from "antd";
-import { Moon, Sun } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
-const useAntTheme = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+// Define the shape of the context
+interface ThemeContextType {
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+}
+
+// Provide a default value for the context
+export const ThemeContext = createContext<ThemeContextType>({
+  theme: "light",
+  toggleTheme: () => {},
+});
+
+// Define props for the provider component
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+  const [theme, setTheme] = useState<"light" | "dark">(
+    (localStorage.getItem("theme") as "light" | "dark") || "light"
+  );
 
   useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      isDarkMode ? "dark" : "light"
-    );
-  }, [isDarkMode]);
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    localStorage.setItem("theme", newTheme ? "dark" : "light");
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
-  return { isDarkMode, toggleTheme };
-};
-
-const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const { isDarkMode, toggleTheme } = useAntTheme();
-
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
-      }}
-    >
-      <div className={isDarkMode ? "dark" : ""}>
-        <div className="w-full flex justify-end pr-5 bg-white dark:bg-dark-background">
-          <Button onClick={toggleTheme} variant="outline" size="icon">
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </Button>
-        </div>
-        {children}
-      </div>
-    </ConfigProvider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 };
-
-export default ThemeProvider;

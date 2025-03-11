@@ -18,7 +18,7 @@ type Inputs = {
   email: string;
 };
 
-const DonationForm = () => {
+const DonationForm = ({ category }: { category: string }) => {
   const [initiateDonation] = useInitialDonationMutation();
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm<Inputs>();
@@ -33,6 +33,7 @@ const DonationForm = () => {
       ...data,
       amount: parseFloat(data.amount.toString()), // Convert to number
       userId, // Attach the userId to the data
+      category,
     };
     console.log(donationData);
 

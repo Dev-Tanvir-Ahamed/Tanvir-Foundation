@@ -44,7 +44,7 @@ const DonationPost = () => {
             flood-hit districts of the country and takes the initiative to stand
             by the needy and helpless people.
           </p>
-          <DonationForm />
+          <DonationForm category={post.category} />
         </div>
       </div>
     </div>

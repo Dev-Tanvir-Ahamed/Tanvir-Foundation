@@ -184,7 +184,7 @@ const verifyToken = (req, res, next) => {
           // Donate
 
           app.post("/api/v1/donate", async (req, res) => {
-            const { name, email, amount, userId } = req.body;
+            const { name, email, amount, userId, category } = req.body;
           
             if (!userId) {
               return res.status(400).json({ message: "User ID is required" });
@@ -194,9 +194,10 @@ const verifyToken = (req, res, next) => {
               const tran_id = uniqid()
               let donation = {
                 userId: new ObjectId(userId),
-                name,
+                name : name || null,
                 email,
                 amount,
+                category,
                 tran_id,
                 paymentStatus: 'pending',
                 paymentDate: null
