@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -75,7 +76,7 @@ export default function CommunityGratitudeWall() {
             {isLoading ? (
               <p>Loading comments...</p>
             ) : data?.data?.length > 0 ? (
-              data.data.map((comment, index) => (
+              data.data.map((comment: any, index: number) => (
                 <div
                   key={comment.id || index}
                   className="bg-white p-4 rounded-lg shadow"

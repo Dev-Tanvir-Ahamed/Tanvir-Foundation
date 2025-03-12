@@ -3,7 +3,8 @@ import MainLayout from "@/components/layouts/MainLayout";
 import UserLoggedLayout from "@/components/layouts/UserLoggedLayout"; // Ensure correct casing
 import ProtectedRoute from "@/components/shared/ProtectedRoute";
 import AllDonationPosts from "@/pages/AllDonationPosts";
-import CommunityGratitudeWall from "@/pages/CommunityGratitudewall";
+
+import CommunityGratitudeWall from "@/pages/CommunityGratitudeWall";
 import CreateDonationPost from "@/pages/CreateDonationPost";
 import DonateNow from "@/pages/DonateNow";
 import DonationLeaderBoard from "@/pages/DonationLeaderBoard";

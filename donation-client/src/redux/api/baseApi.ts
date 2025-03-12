@@ -93,14 +93,13 @@ export const baseApi = createApi({
           body: message,
         };
       },
-      invalidatesTags: ["Gratitude"],
     }),
     getGratitudeWall: builder.query({
       query: () => ({
         url: "/community",
         method: "GET",
       }),
-      providesTags: ["Gratitude"], // Cache tag for posts
+      // providesTags: ["Gratitude"], // Cache tag for posts
     }),
   }),
 });

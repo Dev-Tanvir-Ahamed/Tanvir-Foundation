@@ -15,7 +15,7 @@ import { Button } from "./ui/button";
 type FormValues = {
   category: string;
   email: string;
-  amount: string;
+  amount: number;
 };
 
 export default function DonationCardForm() {
@@ -30,7 +30,7 @@ export default function DonationCardForm() {
     defaultValues: {
       category: undefined,
       email: "",
-      amount: "",
+      amount: 0,
     },
   });
 
@@ -42,7 +42,7 @@ export default function DonationCardForm() {
 
     const donationData = {
       ...data,
-      amount: parseFloat(data.amount), // Convert amount to number
+      amount: parseFloat(data.amount.toString()), // Convert to number
       userId,
       name: null,
     };
