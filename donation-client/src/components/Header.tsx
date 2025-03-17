@@ -23,7 +23,7 @@ const Header = () => {
       {/* Logo */}
       <div className="logo">
         <NavLink to="/home">
-          <h1 className="text-3xl font-bold text-black dark:text-white">
+          <h1 className="text-3xl font-bold text-black dark:text-white font-heading">
             Tanvir Foundation
           </h1>
         </NavLink>

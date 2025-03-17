@@ -18,7 +18,7 @@ const DonationPost = () => {
     );
 
   return (
-    <div className="">
+    <>
       <div className=" bg-primary_color h-24 w-full flex justify-center items-center">
         <p className=" text-4xl font-semibold text-white">{post?.title}</p>
       </div>
@@ -47,7 +47,7 @@ const DonationPost = () => {
           <DonationForm category={post.category} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

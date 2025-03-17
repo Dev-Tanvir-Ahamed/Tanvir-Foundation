@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseUrl =
   process.env.NODE_ENV === "production"
     ? "https://tanvir-foundation-server.vercel.app/api/v1"
-    : "http://localhost:5000/api/v1"; // Localhost for development
+    : "http://localhost:5000/api"; // Localhost for development
 export const baseApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
@@ -19,14 +19,14 @@ export const baseApi = createApi({
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (userInfo) => ({
-        url: "/register",
+        url: "/auth/register",
         method: "POST",
         body: userInfo,
       }),
     }),
     login: builder.mutation({
       query: (userInfo) => ({
-        url: "/login",
+        url: "/auth/login",
         method: "POST",
         body: userInfo,
       }),

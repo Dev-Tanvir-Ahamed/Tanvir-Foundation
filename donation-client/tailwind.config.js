@@ -7,6 +7,10 @@ export default {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			heading: ["Lato", "sans-serif"],
+			body: ["Nunito", "sans-serif"],
+		  },
   		colors: {
   			primary_color: '#008E48',
   			secondary_color: '#0A3B1E',

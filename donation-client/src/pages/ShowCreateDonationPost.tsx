@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import { useGetAllCreateDonationPostQuery } from "@/redux/api/baseApi";
 import { Link } from "react-router-dom";

@@ -7,7 +7,7 @@ const Navbar = () => {
       key: "All Donations",
       label: (
         <NavLink to="/donations">
-          <span className="text-white text-lg hover:text-primary_color">
+          <span className="text-white text-lg hover:text-primary_color font-heading">
             All Donations
           </span>
         </NavLink>
@@ -16,7 +16,7 @@ const Navbar = () => {
     {
       key: "Running Projects",
       label: (
-        <span className="text-white text-lg hover:text-primary_color">
+        <span className="text-white text-lg hover:text-primary_color font-heading">
           Running Projects
         </span>
       ),
@@ -24,7 +24,7 @@ const Navbar = () => {
     {
       key: "Gallery",
       label: (
-        <span className="text-white text-lg hover:text-primary_color">
+        <span className="text-white text-lg hover:text-primary_color font-heading">
           Gallery
         </span>
       ),
@@ -33,7 +33,7 @@ const Navbar = () => {
       key: "LeaderBoard",
       label: (
         <NavLink to="/leaderboard">
-          <span className="text-white text-lg hover:text-primary_color">
+          <span className="text-white text-lg hover:text-primary_color font-heading">
             LeaderBoard
           </span>
         </NavLink>
@@ -43,8 +43,18 @@ const Navbar = () => {
       key: "Community Gratitude Wall",
       label: (
         <NavLink to="/community">
-          <span className="text-white text-lg hover:text-primary_color">
+          <span className="text-white text-lg hover:text-primary_color font-heading">
             Community Gratitude Wall
+          </span>
+        </NavLink>
+      ),
+    },
+    {
+      key: "Volunteer Registration",
+      label: (
+        <NavLink to="/volunteer-registration">
+          <span className="text-white text-lg hover:text-primary_color font-heading">
+            Volunteer Registration
           </span>
         </NavLink>
       ),
@@ -52,9 +62,11 @@ const Navbar = () => {
     {
       key: "Contact Us",
       label: (
-        <span className="text-white text-lg hover:text-primary_color">
-          Contact Us
-        </span>
+        <NavLink to="/contact-us">
+          <span className="text-white text-lg hover:text-primary_color font-heading">
+            Contact Us
+          </span>
+        </NavLink>
       ),
     },
   ];

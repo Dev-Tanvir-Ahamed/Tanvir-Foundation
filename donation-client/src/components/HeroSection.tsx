@@ -10,7 +10,7 @@ const HeroSection = () => {
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative z-10 text-center text-white p-6 max-w-xl">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 ">
           Help Rebuild Lives After Disaster
         </h1>
         <p className="text-lg md:text-xl mb-6">
