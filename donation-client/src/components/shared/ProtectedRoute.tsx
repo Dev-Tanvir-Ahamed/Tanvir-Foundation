@@ -1,16 +1,32 @@
-import { useAppSelector } from "@/redux/hooks";
-import { Navigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const loginData = useAppSelector((state) => state.auth.user); // Fetch logged-in user info from Redux
+  const token = localStorage.getItem("token");
+  const location = useLocation(); // Get the current route
 
-  if (!loginData) {
-    // If no user is logged in, redirect to login page
-    return <Navigate to="/login" replace />;
+  if (!token) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // If user is logged in, render the child component
-  return children;
+  try {
+    const decodedToken = jwtDecode(token) as any;
+    const userRole = decodedToken.role;
+
+    if (userRole === "admin" && location.pathname.startsWith("/admin")) {
+      return children; // Allow admin to access admin routes
+    } else if (userRole === "admin") {
+      return <Navigate to="/admin/dashboard" replace />;
+    }
+
+    if (userRole !== "admin" && location.pathname.startsWith("/admin")) {
+      return <Navigate to="/" replace />; // Non-admins can't access admin routes
+    }
+
+    return children; // Default return
+  } catch (error) {
+    return <Navigate to="/login" replace />;
+  }
 };
 
 export default ProtectedRoute;

@@ -90,10 +90,14 @@ export const router = createBrowserRouter([
   // Admin Dashboard Routes
   {
     path: "/admin",
-    element: <DashboardLayout />,
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
-        path: "", // Default route redirects to dashboard
+        index: true, // Default route redirects to dashboard
         element: <DashboardPage />,
       },
       {
